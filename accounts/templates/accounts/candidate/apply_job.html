@@ -1,0 +1,18 @@
+
+<!-- templates/candidates/apply_to_job.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Apply to {{ job_post.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Apply to "{{ job_post.title }}"</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+        <a href="{% url 'job_post_detail' job_post.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

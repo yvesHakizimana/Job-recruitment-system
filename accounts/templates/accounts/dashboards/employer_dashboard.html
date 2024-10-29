@@ -1,0 +1,76 @@
+<!-- templates/dashboards/employer_dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Employer Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>Here is an overview of your job posts.</p>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Total Job Posts</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ job_posts.count }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Applications</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_applications }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Applications by Status</div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for item in applications_by_status %}
+                            <li>{{ item.status|title }}: {{ item.count }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{% url 'create_job_post' %}" class="btn btn-primary mb-3">Create New Job Post</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Employment Type</th>
+                <th>Location</th>
+                <th>Applications</th>
+                <th>Posted At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in job_posts %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.get_employment_type_display }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.application_count }}</td>
+                    <td>{{ job.posted_at|date:"Y-m-d" }}</td>
+                    <td>
+                        <a href="{% url 'job_post_detail' job.pk %}" class="btn btn-info btn-sm">View</a>
+                        <a href="{% url 'applications_list' job.pk %}" class="btn btn-secondary btn-sm">Applications</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">You have no job posts yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

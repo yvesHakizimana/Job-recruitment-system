@@ -1,0 +1,18 @@
+
+<!-- templates/accounts/profile_update_candidate.html -->
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block title %}Update Candidate Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Update Candidate Profile</h2>
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        {{ form|crispy }}
+    </form>
+</div>
+{% endblock %}

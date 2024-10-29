@@ -1,0 +1,42 @@
+<!-- templates/accounts/job_post_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Your Job Posts{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Job Posts</h2>
+    <a href="{% url 'create_job_post' %}" class="btn btn-primary mb-3">Create New Job Post</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Employment Type</th>
+                <th>Location</th>
+                <th>Applications</th>
+                <th>Posted At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in job_posts %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.get_employment_type_display }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.application_count }}</td>
+                    <td>{{ job.posted_at|date:"Y-m-d" }}</td>
+                    <td>
+                        <a href="{% url 'job_post_detail' job.pk %}" class="btn btn-info btn-sm">View</a>
+                        <a href="{% url 'application_list' job.pk %}" class="btn btn-secondary btn-sm">Applications</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">You have no job posts.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

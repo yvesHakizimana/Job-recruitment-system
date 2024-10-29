@@ -1,0 +1,21 @@
+<!-- templates/accounts/application/update_application_status.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Update Application Status{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Update Status for Application #{{ object.pk }}</h2>
+    <p><strong>Job Post:</strong> {{ object.job_post.title }}</p>
+    <p><strong>Candidate:</strong> {{ object.candidate.username }}</p>
+    <p><strong>Current Status:</strong> {{ object.get_status_display }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Update Status</button>
+        <a href="{% url 'applications_list' object.job_post.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

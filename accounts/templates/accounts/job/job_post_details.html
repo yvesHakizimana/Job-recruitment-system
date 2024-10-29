@@ -1,0 +1,21 @@
+<!-- templates/accounts/job_post_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ job_post.title }} Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ job_post.title }}</h2>
+    <p><strong>Employment Type:</strong> {{ job_post.get_employment_type_display }}</p>
+    <p><strong>Location:</strong> {{ job_post.location }}</p>
+    {% if job_post.salary %}
+        <p><strong>Salary:</strong> ${{ job_post.salary }}</p>
+    {% endif %}
+    <p><strong>Application Deadline:</strong> {{ job_post.application_deadline }}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{ job_post.description }}</p>
+
+    <a href="{% url 'applications_list' job_post.pk %}" class="btn btn-secondary">View Applications</a>
+    <a href="{% url 'employer_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+{% endblock %}

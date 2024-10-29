@@ -1,0 +1,17 @@
+
+<!-- templates/accounts/create_job_post.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Create Job Post{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Create New Job Post</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Create Job Post</button>
+    </form>
+</div>
+{% endblock %}
