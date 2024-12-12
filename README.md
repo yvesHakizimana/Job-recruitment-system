@@ -194,4 +194,4 @@ job_recruitment_system/
 This project is licensed under the MIT License.
 
 ## Contact
-For any issues, feature requests, or contributions, please contact [Yves HAKIZIMANA] at [yvhakizimana123@example.com].
+For any issues, feature requests, or contributions, please contact Yves HAKIZIMANA at yvhakizimana123@example.com.
