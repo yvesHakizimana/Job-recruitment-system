@@ -1,6 +1,5 @@
 from django.urls import path
 
-from accounts.models import JobPost
 from accounts.views import EmployeeSignUpView, CandidateSignUpView, CustomLoginView, \
     EmployeeDashboardView, CandidateDashboardView, logout_view, JobPostView, CreateJobPostView, JobPostDetailView, \
     ApplicationListView, UpdateApplicationStatusView, JobPostListView, JobPostDetailsView, ApplyToJobView, \

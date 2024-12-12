@@ -152,6 +152,7 @@ class ApplicationListView(LoginRequiredMixin, EmployerRequiredMixin, ListView):
         return context
 
 
+# Review and update the application status of the candidate
 class UpdateApplicationStatusView(LoginRequiredMixin, EmployerRequiredMixin, UpdateView):
     model = Application
     form_class = ApplicationStatusForm
@@ -169,6 +170,7 @@ class UpdateApplicationStatusView(LoginRequiredMixin, EmployerRequiredMixin, Upd
         return super().form_valid(form)
 
 
+# Lists the Available jobs.
 class JobPostListView(ListView):
     model = JobPost
     template_name = 'accounts/candidate/job_post_list.html'
@@ -206,6 +208,7 @@ class JobPostListView(ListView):
         return context
 
 
+# Get details of the JobPost.
 class JobPostDetailsView(DetailView):
     model = JobPost
     template_name = 'accounts/candidate/job_post_details.html'
@@ -279,5 +282,3 @@ class CandidateProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, Update
 
 class HomeView(TemplateView):
     template_name = 'home.html'
-
-
