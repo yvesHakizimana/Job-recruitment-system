@@ -48,7 +48,7 @@ The **Job Recruitment System** is a web-based application built with Django, HTM
 ### Steps
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-repository-link/job-recruitment-system.git
+   git clone https://github.com/yvesHakizimana/Job-recruitment-system.git
    cd job-recruitment-system
    ```
 
@@ -194,4 +194,4 @@ job_recruitment_system/
 This project is licensed under the MIT License.
 
 ## Contact
-For any issues, feature requests, or contributions, please contact [Your Name] at [your-email@example.com].
+For any issues, feature requests, or contributions, please contact [Yves HAKIZIMANA] at [yvhakizimana123@example.com].
